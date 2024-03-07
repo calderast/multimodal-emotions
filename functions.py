@@ -122,7 +122,10 @@ def get_ACC_features(data):
                 np.std(axis0), np.std(axis1), np.std(axis2), np.std(data),
                np.sum(np.abs(axis0)), np.sum(np.abs(axis1)), np.sum(np.abs(axis2)),
                get_peak_frequency(axis0, 700), get_peak_frequency(axis1, 700), get_peak_frequency(axis2, 700)]
-    return acc_features
+    acc_feature_names = ['ACC x mean', 'ACC y mean', 'ACC z mean', 'ACC mean', 'ACC x std', 'ACC y std', 
+                         'ACC z std', 'ACC std', 'ACC abs integral x', 'ACC abs integral y', 'ACC abs integral z', 
+                         'ACC peak frequency x', 'ACC peak frequency y', 'ACC peak frequency z']
+    return acc_features, acc_feature_names
 
 
 def get_EMG_features(emg_signal):
@@ -173,7 +176,11 @@ def get_EMG_features(emg_signal):
                    percentile_10, percentile_90, mean_frequency, median_frequency,
                    peak_frequency, num_peaks, mean_peak_amplitude,
                    std_peak_amplitude, sum_peak_amplitudes, normalized_sum_peak_amplitudes]
-    return emg_features
+    emg_feature_names = ['EMG mean', 'EMG std', 'EMG median', 'EMG dynamic range', 'EMG absolute integral',
+                     'EMG 10th percentile', 'EMG 90th percentile', 'EMG mean frequency', 'EMG median frequency',
+                     'EMG peak frequency', 'EMG # peaks', 'EMG mean peak amplitude', 'EMG std peak amplitude', 
+                     'EMG sum peak amplitudes', 'EMG normalized sum peak amplitudes']
+    return emg_features, emg_feature_names
 
 
 def get_resp_features(resp_signal):
@@ -198,7 +205,9 @@ def get_resp_features(resp_signal):
                 mean_exhalation_duration, std_exhalation_duration,
                 inhalation_exhalation_ratio, resp_range, 
                 breath_rate, respiration_duration]
-    return resp_features
+    resp_feature_names = ['mean inhale duration', 'std inhale duration', 'mean exhale duration', 'std exhale duration',
+                          'inhale exhale ratio', 'resp range', 'breath rate', 'resp duration']
+    return resp_features, resp_feature_names
 
 
 def get_temp_features(temp_signal):
@@ -215,6 +224,7 @@ def get_temp_features(temp_signal):
     
     temp_features = [mean_temp, std_temp, min_temp, max_temp,
                     dynamic_range, mean_slope]
-    return temp_features
+    temp_feature_names = ['temp mean', 'temp std', 'temp min', 'temp max', 'temp dynamic range', 'temp slope']
+    return temp_features, temp_feature_names
     
  
